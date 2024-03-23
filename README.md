@@ -15,6 +15,14 @@ Open WebUI is an extensible, feature-rich, and user-friendly self-hosted WebUI d
 
 ![Open WebUI Demo](./demo.gif)
 
+## ローカルで使用する場合の設定
+
+```bash
+docker compose -f docker-compose.yaml -f docker-compose.gpu.yaml up -d --build
+docker compose -f docker-compose.yaml -f docker-compose.gpu.yaml exec ollama ollama create <model-name> -f /app/models/Modelfile
+docker compose -f docker-compose.yaml -f docker-compose.gpu.yaml exec ollama ollama run <model-name>
+```
+
 ## Features ⭐
 
 - 🖥️ **Intuitive Interface**: Our chat interface takes inspiration from ChatGPT, ensuring a user-friendly experience.
