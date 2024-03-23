@@ -15,6 +15,14 @@ Open WebUI is an [extensible](https://github.com/open-webui/pipelines), feature-
 
 ![Open WebUI Demo](./demo.gif)
 
+## ローカルで使用する場合の設定
+
+```bash
+docker compose -f docker-compose.yaml -f docker-compose.gpu.yaml up -d --build
+docker compose -f docker-compose.yaml -f docker-compose.gpu.yaml exec ollama ollama create <model-name> -f /app/models/Modelfile
+docker compose -f docker-compose.yaml -f docker-compose.gpu.yaml exec ollama ollama run <model-name>
+```
+
 ## Key Features of Open WebUI ⭐
 
 - 🚀 **Effortless Setup**: Install seamlessly using Docker or Kubernetes (kubectl, kustomize or helm) for a hassle-free experience with support for both `:ollama` and `:cuda` tagged images.
