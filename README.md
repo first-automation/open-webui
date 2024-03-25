@@ -23,6 +23,10 @@ For more information, be sure to check out our [Open WebUI Documentation](https:
 docker compose -f docker-compose.yaml -f docker-compose.gpu.yaml up -d --build
 docker compose -f docker-compose.yaml -f docker-compose.gpu.yaml exec ollama ollama create <model-name> -f /app/models/Modelfile
 docker compose -f docker-compose.yaml -f docker-compose.gpu.yaml exec ollama ollama run <model-name>
+# 必要であればNumber of GPU layersを設定する
+/set parameter num_gpu 30
+# 終了
+docker compose -f docker-compose.yaml -f docker-compose.gpu.yaml down
 ```
 
 ## Key Features of Open WebUI ⭐
