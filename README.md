@@ -21,6 +21,10 @@ Open WebUI is an extensible, feature-rich, and user-friendly self-hosted WebUI d
 docker compose -f docker-compose.yaml -f docker-compose.gpu.yaml up -d --build
 docker compose -f docker-compose.yaml -f docker-compose.gpu.yaml exec ollama ollama create <model-name> -f /app/models/Modelfile
 docker compose -f docker-compose.yaml -f docker-compose.gpu.yaml exec ollama ollama run <model-name>
+# 必要であればNumber of GPU layersを設定する
+/set parameter num_gpu 30
+# 終了
+docker compose -f docker-compose.yaml -f docker-compose.gpu.yaml down
 ```
 
 ## Features ⭐
