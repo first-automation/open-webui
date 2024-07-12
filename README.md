@@ -27,6 +27,21 @@ docker compose -f docker-compose.yaml -f docker-compose.gpu.yaml exec ollama oll
 docker compose -f docker-compose.yaml -f docker-compose.gpu.yaml down
 ```
 
+### トラブルシューティング
+
+以下のようなエラーが出るときは、手動でEmbeddingモデルのダウンロードを行う。
+
+```
+open-webui  | OSError: Error no file named pytorch_model.bin, model.safetensors, tf_model.h5, model.ckpt.index or flax_model.msgpack found in directory /app/backend/data/cache/embedding/models/models--intfloat--multilingual-e5-large/snapshots/ab10c1a7f42e74530fe7ae5be82e6d4f11a719eb.
+```
+
+Embeddingモデルの手動ダウンロード
+
+```bash
+docker compose -f docker-compose.yaml -f docker-compose.gpu.yaml run open-webui /bin/bash
+python -c "import os; from sentence_transformers import SentenceTransformer; SentenceTransformer(os.environ['RAG_EMBEDDING_MODEL'], device='cpu')"
+```
+
 ## Key Features of Open WebUI ⭐
 
 - 🚀 **Effortless Setup**: Install seamlessly using Docker or Kubernetes (kubectl, kustomize or helm) for a hassle-free experience with support for both `:ollama` and `:cuda` tagged images.
