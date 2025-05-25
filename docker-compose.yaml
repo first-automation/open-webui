@@ -30,6 +30,14 @@ services:
       - host.docker.internal:host-gateway
     restart: unless-stopped
 
+  mcpo:
+    image: ghcr.io/open-webui/mcpo:main
+    command: ["--config", "/app/etc/config.json", "--api-key", "top-secret"]
+    ports:
+    - "8000:8000"
+    volumes:
+    - ./data:/app/etc
+    restart: unless-stopped
 volumes:
   ollama: {}
   open-webui: {}
